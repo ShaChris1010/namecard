@@ -1,264 +1,253 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>李昆融 Kun-Rong Li｜數位名片</title>
-<meta name="description" content="李昆融 Kun-Rong Li — 外科專科護理師／資訊護理師，中國醫藥大學北港附設醫院。研究、臨床、資訊與音樂。">
-<meta property="og:title" content="李昆融 Kun-Rong Li">
-<meta property="og:description" content="外科專科護理師／資訊護理師 · China Medical University Beigang Hospital">
+<title>Kun-Rong Li — Digital Card</title>
+<meta name="description" content="Kun-Rong Li — Surgical Nurse Practitioner / Informatics Nurse, China Medical University Beigang Hospital.">
+<meta property="og:title" content="Kun-Rong Li">
+<meta property="og:description" content="Surgical Nurse Practitioner / Informatics Nurse · China Medical University Beigang Hospital">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#14181D;
-  --ink-2:#1B2026;
-  --washi:#EDE6D8;
-  --washi-dim:#B9B2A4;
-  --vermilion:#C53A2B;
-  --gold:#B98A3C;
-  --teal:#58C7B8;
-  --graphite:#80878F;
-  --serif:"Noto Serif TC",serif;
-  --sans:"Noto Sans TC",sans-serif;
+  --bg:#0A0E14;
+  --txt:#EAF0F7;
+  --txt-dim:#93A0B4;
+  --line:rgba(234,240,247,.10);
+  --glass:rgba(255,255,255,.045);
+  --glass-hi:rgba(255,255,255,.09);
+  --violet:#8B5CF6;
+  --cyan:#22D3EE;
+  --magenta:#F472B6;
+  --grad:linear-gradient(120deg,var(--violet),var(--cyan));
+  --display:"Space Grotesk",sans-serif;
+  --body:"Inter",sans-serif;
   --mono:"JetBrains Mono",monospace;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  background:var(--ink);
-  color:var(--washi);
-  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--txt);
+  font-family:var(--body);
   font-weight:300;
-  line-height:1.75;
-  letter-spacing:.02em;
+  line-height:1.7;
   min-height:100svh;
+  overflow-x:hidden;
 }
-.frame{
-  max-width:620px;
-  margin:0 auto;
-  padding:clamp(28px,6vw,56px) clamp(20px,5vw,36px) 64px;
+/* ===== aurora background ===== */
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden;filter:blur(70px) saturate(1.2)}
+.aurora i{position:absolute;border-radius:50%;opacity:.5}
+.aurora i:nth-child(1){width:48vmax;height:48vmax;left:-14vmax;top:-18vmax;background:radial-gradient(circle,#8B5CF6 0%,transparent 64%);animation:drift1 26s ease-in-out infinite alternate}
+.aurora i:nth-child(2){width:42vmax;height:42vmax;right:-16vmax;top:22vh;background:radial-gradient(circle,#0E7490 0%,transparent 62%);animation:drift2 32s ease-in-out infinite alternate}
+.aurora i:nth-child(3){width:30vmax;height:30vmax;left:28vw;bottom:-16vmax;background:radial-gradient(circle,#9D174D 0%,transparent 60%);animation:drift3 38s ease-in-out infinite alternate;opacity:.32}
+@keyframes drift1{to{transform:translate(9vmax,7vmax) scale(1.12)}}
+@keyframes drift2{to{transform:translate(-8vmax,-6vmax) scale(.92)}}
+@keyframes drift3{to{transform:translate(-6vmax,-9vmax) scale(1.18)}}
+body::after{ /* grain，壓住漸層的塑膠感 */
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.frame{max-width:680px;margin:0 auto;padding:clamp(28px,6vw,64px) clamp(20px,5vw,36px) 72px}
+/* ===== hero: tilting glass ID card ===== */
+.id-wrap{perspective:1200px}
+.id-card{
   position:relative;
+  border-radius:22px;
+  padding:clamp(26px,5.5vw,40px);
+  background:linear-gradient(155deg,rgba(255,255,255,.085),rgba(255,255,255,.028) 58%);
+  border:1px solid var(--line);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 24px 64px rgba(0,0,0,.45);
+  transform-style:preserve-3d;
+  transition:transform .18s ease-out;
+  will-change:transform;
 }
-/* 側邊直書幡 */
-.banner{
-  position:fixed;
-  top:0;right:max(8px,calc(50vw - 360px));
-  writing-mode:vertical-rl;
-  font-family:var(--serif);
-  font-size:11px;
-  letter-spacing:.55em;
-  color:var(--graphite);
-  padding-top:18px;
-  opacity:.85;
-  user-select:none;
-  pointer-events:none;
+.id-card::before{ /* 流光邊框 */
+  content:"";position:absolute;inset:-1px;border-radius:23px;padding:1px;z-index:-1;
+  background:linear-gradient(130deg,rgba(139,92,246,.65),rgba(34,211,238,.4) 42%,transparent 68%,rgba(244,114,182,.45));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
 }
-.banner::before{
-  content:"";
-  display:block;
-  width:1px;height:34px;
-  background:var(--gold);
-  margin:0 auto 14px;
+.chip{ /* 名片晶片，致敬實體卡 */
+  width:42px;height:32px;border-radius:7px;margin-bottom:26px;
+  background:linear-gradient(135deg,#C9D4E3,#7F8DA1);
+  position:relative;opacity:.9;transform:translateZ(30px);
 }
-/* ===== Hero ===== */
-.hero{display:flex;align-items:flex-end;gap:24px;padding-top:26px}
-.seal{
-  width:88px;height:88px;flex:0 0 88px;
-  background:var(--vermilion);
-  border-radius:10px;
-  transform:rotate(-3deg);
-  display:grid;place-items:center;
-  position:relative;
-  box-shadow:0 6px 24px rgba(197,58,43,.28);
+.chip::after{content:"";position:absolute;inset:7px 9px;border:1px solid rgba(10,14,20,.45);border-radius:3px}
+.id-card h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(38px,9vw,56px);
+  line-height:1.04;letter-spacing:-.02em;
+  transform:translateZ(40px);
 }
-.seal::after{ /* 印泥邊緣的不均勻 */
-  content:"";position:absolute;inset:0;border-radius:10px;
-  box-shadow:inset 0 0 0 2px rgba(20,24,29,.18);
-  mix-blend-mode:multiply;
+.id-card h1 .zh{
+  display:block;font-size:.42em;font-weight:500;letter-spacing:.34em;
+  color:var(--txt-dim);margin-top:10px;
 }
-.seal span{
-  writing-mode:vertical-rl;
-  font-family:var(--serif);font-weight:900;
-  font-size:34px;line-height:1.05;letter-spacing:.08em;
-  color:var(--ink);
+.role{
+  margin-top:22px;font-family:var(--display);font-weight:500;
+  font-size:clamp(15.5px,3.9vw,18px);
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateZ(26px);
 }
-.name-block h1{
-  font-family:var(--serif);font-weight:900;
-  font-size:clamp(44px,11vw,64px);
-  line-height:1.1;letter-spacing:.06em;
+.org{margin-top:4px;font-size:14px;color:var(--txt-dim);transform:translateZ(26px)}
+.id-meta{
+  display:flex;justify-content:space-between;gap:14px;margin-top:30px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--txt-dim);
+  text-transform:uppercase;transform:translateZ(20px);
 }
-.name-block .romanized{
-  font-family:var(--mono);font-size:13px;font-weight:400;
-  color:var(--gold);letter-spacing:.22em;margin-top:6px;
-  text-transform:uppercase;
-}
-.roles{
-  margin-top:22px;
-  font-family:var(--serif);font-weight:500;
-  font-size:clamp(17px,4.4vw,20px);
-  color:var(--washi);
-}
-.org{margin-top:6px;font-size:14px;color:var(--washi-dim)}
-.org em{font-style:normal;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--graphite);display:block;margin-top:2px}
-/* ===== Sections ===== */
-.rule{
-  border:0;height:1px;margin:38px 0 30px;
-  background:linear-gradient(to right,var(--gold) 0 56px,rgba(185,138,60,.22) 56px 100%);
-}
+/* ===== sections ===== */
+section{margin-top:54px}
 .eyebrow{
-  font-family:var(--mono);font-size:11px;font-weight:500;
-  letter-spacing:.3em;color:var(--vermilion);
-  text-transform:uppercase;
-  display:flex;align-items:baseline;gap:12px;
-  margin-bottom:18px;
+  display:flex;align-items:center;gap:14px;margin-bottom:22px;
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--txt-dim);
 }
-.eyebrow b{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--washi);letter-spacing:.3em}
-.pos-list{list-style:none}
-.pos-list li{padding:8px 0;display:flex;gap:14px;align-items:baseline}
-.pos-list .dot{color:var(--gold);font-family:var(--mono)}
-.pos-list .en{display:block;font-family:var(--mono);font-size:11.5px;color:var(--graphite);letter-spacing:.03em}
-/* 成就 */
-.feats{list-style:none}
-.feats li{
-  position:relative;padding:14px 0 14px 64px;
-  border-bottom:1px solid rgba(237,230,216,.07);
+.eyebrow::after{content:"";flex:1;height:1px;background:linear-gradient(to right,var(--line),transparent)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--grad);box-shadow:0 0 12px rgba(34,211,238,.8)}
+.cards{display:grid;gap:12px}
+.gcard{
+  border-radius:14px;padding:17px 20px;
+  background:var(--glass);
+  border:1px solid var(--line);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  transition:background .25s,border-color .25s,transform .25s;
 }
-.feats li:last-child{border-bottom:0}
-.feats .yr{
-  position:absolute;left:0;top:16px;
-  font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.05em;
+.gcard:hover{background:var(--glass-hi);border-color:rgba(139,92,246,.4);transform:translateY(-2px)}
+.gcard .t{font-weight:400;font-size:15.5px;color:var(--txt)}
+.gcard .d{font-size:13px;color:var(--txt-dim);margin-top:2px}
+.gcard .yr{
+  float:right;margin-left:14px;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.feats .t{font-weight:400;color:var(--washi);font-size:15.5px}
-.feats .d{font-size:13px;color:var(--washi-dim);margin-top:2px}
-/* ===== Links ===== */
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+/* ===== links ===== */
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .btn{
-  display:flex;flex-direction:column;gap:2px;
-  padding:16px 18px;text-decoration:none;
-  background:var(--ink-2);
-  border:1px solid rgba(237,230,216,.12);
-  border-radius:8px;
-  color:var(--washi);
-  transition:border-color .25s,transform .25s;
+  display:flex;flex-direction:column;gap:3px;
+  padding:17px 20px;border-radius:14px;text-decoration:none;
+  background:var(--glass);
+  border:1px solid var(--line);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  color:var(--txt);
+  transition:border-color .25s,transform .25s,background .25s;
 }
-.btn:hover,.btn:focus-visible{border-color:var(--teal);transform:translateY(-2px)}
-.btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-.btn .label{font-family:var(--serif);font-weight:700;font-size:16px;letter-spacing:.12em}
-.btn .sub{font-family:var(--mono);font-size:11px;color:var(--graphite);letter-spacing:.02em}
-.btn.primary{background:var(--vermilion);border-color:var(--vermilion)}
-.btn.primary .label{color:var(--ink)}
-.btn.primary .sub{color:rgba(20,24,29,.72)}
-.btn.primary:hover{border-color:var(--washi)}
+.btn:hover,.btn:focus-visible{border-color:var(--cyan);background:var(--glass-hi);transform:translateY(-3px)}
+.btn:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.btn .label{font-family:var(--display);font-weight:500;font-size:16px}
+.btn .sub{font-family:var(--mono);font-size:11px;color:var(--txt-dim)}
+.btn.primary{background:var(--grad);border:none}
+.btn.primary .label{color:#0A0E14}
+.btn.primary .sub{color:rgba(10,14,20,.7)}
+.btn.primary:hover{filter:brightness(1.12)}
 /* ===== QR / footer ===== */
-.qr-wrap{
-  margin-top:44px;display:flex;align-items:center;gap:22px;
+.qr-row{display:flex;align-items:center;gap:22px;margin-top:54px}
+.qr-row img{
+  width:104px;height:104px;border-radius:12px;
+  background:#EAF0F7;padding:7px;
+  border:1px solid var(--line);
 }
-.qr-wrap canvas,.qr-wrap img{
-  width:104px;height:104px;border-radius:6px;
-  background:var(--washi);padding:7px;
-}
-.qr-note{font-size:12.5px;color:var(--washi-dim)}
-.qr-note b{display:block;font-family:var(--mono);font-size:11px;color:var(--graphite);font-weight:400;margin-top:4px;word-break:break-all}
-footer{
-  margin-top:46px;font-family:var(--mono);
-  font-size:10.5px;color:var(--graphite);letter-spacing:.08em;
-}
-/* 載入序列 */
+.qr-note{font-size:13px;color:var(--txt-dim)}
+.qr-note b{display:block;font-family:var(--mono);font-size:11px;font-weight:400;margin-top:4px;word-break:break-all;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+footer{margin-top:50px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--txt-dim);text-transform:uppercase}
+/* ===== entrance ===== */
 @media (prefers-reduced-motion:no-preference){
-  .hero,.s1,.s2,.s3,.qr-wrap,footer{
-    opacity:0;transform:translateY(10px);
-    animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards;
-  }
-  .s1{animation-delay:.12s}.s2{animation-delay:.22s}.s3{animation-delay:.32s}
-  .qr-wrap{animation-delay:.42s}footer{animation-delay:.5s}
+  .rise{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .rise:nth-of-type(2){animation-delay:.1s}
+  .rise:nth-of-type(3){animation-delay:.2s}
+  .rise:nth-of-type(4){animation-delay:.3s}
+  .rise:nth-of-type(5){animation-delay:.4s}
+  .rise:nth-of-type(6){animation-delay:.5s}
   @keyframes rise{to{opacity:1;transform:none}}
 }
-@media (max-width:430px){
-  .banner{display:none}
+@media (prefers-reduced-motion:reduce){
+  .aurora i{animation:none}
+  .id-card{transition:none}
+}
+@media (max-width:440px){
   .actions{grid-template-columns:1fr}
+  .gcard .yr{float:none;display:block;margin:0 0 2px}
 }
 </style>
 </head>
 <body>
-<div class="banner">外科・資訊・研究・音樂</div>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
 <main class="frame">
 
-  <header class="hero">
-    <div class="seal" aria-hidden="true"><span>昆融</span></div>
-    <div class="name-block">
-      <h1>李昆融</h1>
-      <div class="romanized">Kun-Rong&nbsp;Li</div>
+  <div class="id-wrap rise">
+    <div class="id-card" id="tilt">
+      <div class="chip" aria-hidden="true"></div>
+      <h1>Kun-Rong Li<span class="zh">李昆融</span></h1>
+      <p class="role">Surgical Nurse Practitioner / Informatics Nurse</p>
+      <p class="org">China Medical University Beigang Hospital</p>
+      <div class="id-meta"><span>Beigang · Taiwan</span><span>NP since 2018</span></div>
     </div>
-  </header>
+  </div>
 
-  <p class="roles">外科專科護理師&nbsp;／&nbsp;資訊護理師</p>
-  <p class="org">中國醫藥大學北港附設醫院
-    <em>China Medical University Beigang Hospital</em>
-  </p>
-
-  <hr class="rule">
-
-  <section class="s1">
-    <div class="eyebrow">Position <b>現職與學歷</b></div>
-    <ul class="pos-list">
-      <li><span class="dot">—</span><span>外科專科護理師，中國醫藥大學北港附設醫院
-        <span class="en">Surgical Nurse Practitioner, Dept. of Surgery</span></span></li>
-      <li><span class="dot">—</span><span>資訊護理師（院內數位化與流程自動化）
-        <span class="en">Informatics Nurse — clinical workflow digitalization</span></span></li>
-      <li><span class="dot">—</span><span>長庚科技大學 護理系碩士在職專班 研究生
-        <span class="en">MSN candidate, Chang Gung University of Science and Technology (CGUST)</span></span></li>
-    </ul>
+  <section class="rise">
+    <div class="eyebrow"><span class="dot"></span>Experience &amp; Education</div>
+    <div class="cards">
+      <div class="gcard"><span class="yr">2018—</span>
+        <div class="t">Surgical Nurse Practitioner, Department of Surgery</div>
+        <div class="d">China Medical University Beigang Hospital</div>
+      </div>
+      <div class="gcard">
+        <div class="t">Informatics Nurse</div>
+        <div class="d">Clinical workflow digitalization &amp; automation</div>
+      </div>
+      <div class="gcard"><span class="yr">2015—2018</span>
+        <div class="t">ICU Registered Nurse</div>
+        <div class="d">China Medical University Beigang Hospital</div>
+      </div>
+      <div class="gcard">
+        <div class="t">MSN — Chang Gung University of Science and Technology (CGUST)</div>
+        <div class="d">BSN — China Medical University</div>
+      </div>
+    </div>
   </section>
 
-  <hr class="rule">
-
-  <section class="s2">
-    <div class="eyebrow">Research &amp; Works <b>研究與成就</b></div>
-    <ul class="feats">
-      <li>
-        <span class="yr">2026</span>
-        <div class="t">第 31 屆 HPH 國際研討會（OHL/HPH 2026）海報發表</div>
-        <div class="d">健康促進醫院國際網絡年會・共同第一作者</div>
-      </li>
-      <li>
-        <span class="yr">2026</span>
-        <div class="t">第 12 回日本 NP 学会学術集会 投稿（大阪）</div>
-        <div class="d">口頭發表（研究報告）＋海報（活動報告）</div>
-      </li>
-      <li>
-        <span class="yr">2026</span>
-        <div class="t">碩士研究：環境音樂輔助療法（EMCT）</div>
-        <div class="d">護理人員心理困擾與工作效率之介入研究（DASS-42・皮質醇）</div>
-      </li>
-      <li>
-        <span class="yr">2026</span>
-        <div class="t">院內「感染會診數位化」Power Platform 專案</div>
-        <div class="d">SharePoint＋Power Apps＋Power Automate・院內競賽決賽</div>
-      </li>
-      <li>
-        <span class="yr">2026</span>
-        <div class="t">專科護理師國考刷題平台（NP Quiz）開發者</div>
-        <div class="d">FastAPI 自架・AI 出題與解析</div>
-      </li>
-      <li>
-        <span class="yr">—</span>
-        <div class="t">音樂創作：ShaChrisStudio</div>
-        <div class="d">Cyberpunk Emo-Rock × Temple Zen・AI 輔助音樂影像製作</div>
-      </li>
-    </ul>
+  <section class="rise">
+    <div class="eyebrow"><span class="dot"></span>Research &amp; Highlights</div>
+    <div class="cards">
+      <div class="gcard"><span class="yr">2026</span>
+        <div class="t">Poster — 31st International HPH Conference</div>
+        <div class="d">OHL/HPH 2026</div>
+      </div>
+      <div class="gcard"><span class="yr">2025</span>
+        <div class="t">Poster — APCNP 2025</div>
+      </div>
+      <div class="gcard"><span class="yr">2023</span>
+        <div class="t">Poster — APCNP 2023</div>
+      </div>
+      <div class="gcard"><span class="yr">2025—</span>
+        <div class="t">Principal Investigator — EMCT study</div>
+        <div class="d">Environmental Music Complementary Therapy: nurses' psychological distress &amp; work efficiency</div>
+      </div>
+      <div class="gcard"><span class="yr">2026</span>
+        <div class="t">Developer — NP Quiz</div>
+        <div class="d">AI-powered exam-prep platform for nurse practitioners</div>
+      </div>
+      <div class="gcard">
+        <div class="t">Music Creator — ShaChrisStudio</div>
+      </div>
+    </div>
   </section>
 
-  <hr class="rule">
-
-  <section class="s3">
-    <div class="eyebrow">Links <b>聯絡與連結</b></div>
+  <section class="rise">
+    <div class="eyebrow"><span class="dot"></span>Connect</div>
     <div class="actions">
       <a class="btn primary" href="kunrong-li.vcf" download>
-        <span class="label">存入聯絡人</span>
-        <span class="sub">Download vCard (.vcf)</span>
+        <span class="label">Save Contact</span>
+        <span class="sub">Download vCard</span>
       </a>
       <a class="btn" href="mailto:shakugan83@gmail.com">
         <span class="label">Email</span>
@@ -275,14 +264,40 @@ footer{
     </div>
   </section>
 
-  <div class="qr-wrap">
-    <img src="qr.png" alt="本頁 QR code" width="104" height="104">
-    <p class="qr-note">掃描或輕觸分享此名片
+  <div class="qr-row rise">
+    <img src="qr.png" alt="QR code of this card" width="104" height="104">
+    <p class="qr-note">Scan or tap to share this card
       <b>shachris1010.github.io/namecard</b>
     </p>
   </div>
 
-  <footer>KUN-RONG LI · BEIGANG · TAIWAN</footer>
+  <footer class="rise">Kun-Rong Li · Beigang · Taiwan</footer>
 </main>
+
+<script>
+(function(){
+  const card = document.getElementById('tilt');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !card) return;
+  const max = 9;
+  function move(e){
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - .5;
+    const y = (e.clientY - r.top) / r.height - .5;
+    card.style.transform = `rotateY(${x*max}deg) rotateX(${-y*max}deg)`;
+  }
+  function reset(){ card.style.transform = 'rotateY(0deg) rotateX(0deg)'; }
+  if (matchMedia('(pointer: fine)').matches){
+    card.addEventListener('pointermove', move);
+    card.addEventListener('pointerleave', reset);
+  } else {
+    // 手機：用捲動做輕微視差，不要求陀螺儀權限
+    addEventListener('scroll', () => {
+      const t = Math.max(-1, Math.min(1, scrollY / 300));
+      card.style.transform = `rotateX(${t*-4}deg)`;
+    }, {passive:true});
+  }
+})();
+</script>
 </body>
 </html>
