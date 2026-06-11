@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>李昆融 Kun-Rong Li｜數位名片</title>
+<meta name="description" content="李昆融 Kun-Rong Li — 外科專科護理師／資訊護理師，中國醫藥大學北港附設醫院。研究、臨床、資訊與音樂。">
+<meta property="og:title" content="李昆融 Kun-Rong Li">
+<meta property="og:description" content="外科專科護理師／資訊護理師 · China Medical University Beigang Hospital">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14181D;
+  --ink-2:#1B2026;
+  --washi:#EDE6D8;
+  --washi-dim:#B9B2A4;
+  --vermilion:#C53A2B;
+  --gold:#B98A3C;
+  --teal:#58C7B8;
+  --graphite:#80878F;
+  --serif:"Noto Serif TC",serif;
+  --sans:"Noto Sans TC",sans-serif;
+  --mono:"JetBrains Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--washi);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.75;
+  letter-spacing:.02em;
+  min-height:100svh;
+}
+.frame{
+  max-width:620px;
+  margin:0 auto;
+  padding:clamp(28px,6vw,56px) clamp(20px,5vw,36px) 64px;
+  position:relative;
+}
+/* 側邊直書幡 */
+.banner{
+  position:fixed;
+  top:0;right:max(8px,calc(50vw - 360px));
+  writing-mode:vertical-rl;
+  font-family:var(--serif);
+  font-size:11px;
+  letter-spacing:.55em;
+  color:var(--graphite);
+  padding-top:18px;
+  opacity:.85;
+  user-select:none;
+  pointer-events:none;
+}
+.banner::before{
+  content:"";
+  display:block;
+  width:1px;height:34px;
+  background:var(--gold);
+  margin:0 auto 14px;
+}
+/* ===== Hero ===== */
+.hero{display:flex;align-items:flex-end;gap:24px;padding-top:26px}
+.seal{
+  width:88px;height:88px;flex:0 0 88px;
+  background:var(--vermilion);
+  border-radius:10px;
+  transform:rotate(-3deg);
+  display:grid;place-items:center;
+  position:relative;
+  box-shadow:0 6px 24px rgba(197,58,43,.28);
+}
+.seal::after{ /* 印泥邊緣的不均勻 */
+  content:"";position:absolute;inset:0;border-radius:10px;
+  box-shadow:inset 0 0 0 2px rgba(20,24,29,.18);
+  mix-blend-mode:multiply;
+}
+.seal span{
+  writing-mode:vertical-rl;
+  font-family:var(--serif);font-weight:900;
+  font-size:34px;line-height:1.05;letter-spacing:.08em;
+  color:var(--ink);
+}
+.name-block h1{
+  font-family:var(--serif);font-weight:900;
+  font-size:clamp(44px,11vw,64px);
+  line-height:1.1;letter-spacing:.06em;
+}
+.name-block .romanized{
+  font-family:var(--mono);font-size:13px;font-weight:400;
+  color:var(--gold);letter-spacing:.22em;margin-top:6px;
+  text-transform:uppercase;
+}
+.roles{
+  margin-top:22px;
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(17px,4.4vw,20px);
+  color:var(--washi);
+}
+.org{margin-top:6px;font-size:14px;color:var(--washi-dim)}
+.org em{font-style:normal;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--graphite);display:block;margin-top:2px}
+/* ===== Sections ===== */
+.rule{
+  border:0;height:1px;margin:38px 0 30px;
+  background:linear-gradient(to right,var(--gold) 0 56px,rgba(185,138,60,.22) 56px 100%);
+}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.3em;color:var(--vermilion);
+  text-transform:uppercase;
+  display:flex;align-items:baseline;gap:12px;
+  margin-bottom:18px;
+}
+.eyebrow b{font-family:var(--serif);font-weight:700;font-size:16px;color:var(--washi);letter-spacing:.3em}
+.pos-list{list-style:none}
+.pos-list li{padding:8px 0;display:flex;gap:14px;align-items:baseline}
+.pos-list .dot{color:var(--gold);font-family:var(--mono)}
+.pos-list .en{display:block;font-family:var(--mono);font-size:11.5px;color:var(--graphite);letter-spacing:.03em}
+/* 成就 */
+.feats{list-style:none}
+.feats li{
+  position:relative;padding:14px 0 14px 64px;
+  border-bottom:1px solid rgba(237,230,216,.07);
+}
+.feats li:last-child{border-bottom:0}
+.feats .yr{
+  position:absolute;left:0;top:16px;
+  font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.05em;
+}
+.feats .t{font-weight:400;color:var(--washi);font-size:15.5px}
+.feats .d{font-size:13px;color:var(--washi-dim);margin-top:2px}
+/* ===== Links ===== */
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px}
+.btn{
+  display:flex;flex-direction:column;gap:2px;
+  padding:16px 18px;text-decoration:none;
+  background:var(--ink-2);
+  border:1px solid rgba(237,230,216,.12);
+  border-radius:8px;
+  color:var(--washi);
+  transition:border-color .25s,transform .25s;
+}
+.btn:hover,.btn:focus-visible{border-color:var(--teal);transform:translateY(-2px)}
+.btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.btn .label{font-family:var(--serif);font-weight:700;font-size:16px;letter-spacing:.12em}
+.btn .sub{font-family:var(--mono);font-size:11px;color:var(--graphite);letter-spacing:.02em}
+.btn.primary{background:var(--vermilion);border-color:var(--vermilion)}
+.btn.primary .label{color:var(--ink)}
+.btn.primary .sub{color:rgba(20,24,29,.72)}
+.btn.primary:hover{border-color:var(--washi)}
+/* ===== QR / footer ===== */
+.qr-wrap{
+  margin-top:44px;display:flex;align-items:center;gap:22px;
+}
+.qr-wrap canvas,.qr-wrap img{
+  width:104px;height:104px;border-radius:6px;
+  background:var(--washi);padding:7px;
+}
+.qr-note{font-size:12.5px;color:var(--washi-dim)}
+.qr-note b{display:block;font-family:var(--mono);font-size:11px;color:var(--graphite);font-weight:400;margin-top:4px;word-break:break-all}
+footer{
+  margin-top:46px;font-family:var(--mono);
+  font-size:10.5px;color:var(--graphite);letter-spacing:.08em;
+}
+/* 載入序列 */
+@media (prefers-reduced-motion:no-preference){
+  .hero,.s1,.s2,.s3,.qr-wrap,footer{
+    opacity:0;transform:translateY(10px);
+    animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .s1{animation-delay:.12s}.s2{animation-delay:.22s}.s3{animation-delay:.32s}
+  .qr-wrap{animation-delay:.42s}footer{animation-delay:.5s}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+@media (max-width:430px){
+  .banner{display:none}
+  .actions{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="banner">外科・資訊・研究・音樂</div>
+<main class="frame">
+
+  <header class="hero">
+    <div class="seal" aria-hidden="true"><span>昆融</span></div>
+    <div class="name-block">
+      <h1>李昆融</h1>
+      <div class="romanized">Kun-Rong&nbsp;Li</div>
+    </div>
+  </header>
+
+  <p class="roles">外科專科護理師&nbsp;／&nbsp;資訊護理師</p>
+  <p class="org">中國醫藥大學北港附設醫院
+    <em>China Medical University Beigang Hospital</em>
+  </p>
+
+  <hr class="rule">
+
+  <section class="s1">
+    <div class="eyebrow">Position <b>現職與學歷</b></div>
+    <ul class="pos-list">
+      <li><span class="dot">—</span><span>外科專科護理師，中國醫藥大學北港附設醫院
+        <span class="en">Surgical Nurse Practitioner, Dept. of Surgery</span></span></li>
+      <li><span class="dot">—</span><span>資訊護理師（院內數位化與流程自動化）
+        <span class="en">Informatics Nurse — clinical workflow digitalization</span></span></li>
+      <li><span class="dot">—</span><span>長庚科技大學 護理系碩士在職專班 研究生
+        <span class="en">MSN candidate, Chang Gung University of Science and Technology (CGUST)</span></span></li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="s2">
+    <div class="eyebrow">Research &amp; Works <b>研究與成就</b></div>
+    <ul class="feats">
+      <li>
+        <span class="yr">2026</span>
+        <div class="t">第 31 屆 HPH 國際研討會（OHL/HPH 2026）海報發表</div>
+        <div class="d">健康促進醫院國際網絡年會・共同第一作者</div>
+      </li>
+      <li>
+        <span class="yr">2026</span>
+        <div class="t">第 12 回日本 NP 学会学術集会 投稿（大阪）</div>
+        <div class="d">口頭發表（研究報告）＋海報（活動報告）</div>
+      </li>
+      <li>
+        <span class="yr">2026</span>
+        <div class="t">碩士研究：環境音樂輔助療法（EMCT）</div>
+        <div class="d">護理人員心理困擾與工作效率之介入研究（DASS-42・皮質醇）</div>
+      </li>
+      <li>
+        <span class="yr">2026</span>
+        <div class="t">院內「感染會診數位化」Power Platform 專案</div>
+        <div class="d">SharePoint＋Power Apps＋Power Automate・院內競賽決賽</div>
+      </li>
+      <li>
+        <span class="yr">2026</span>
+        <div class="t">專科護理師國考刷題平台（NP Quiz）開發者</div>
+        <div class="d">FastAPI 自架・AI 出題與解析</div>
+      </li>
+      <li>
+        <span class="yr">—</span>
+        <div class="t">音樂創作：ShaChrisStudio</div>
+        <div class="d">Cyberpunk Emo-Rock × Temple Zen・AI 輔助音樂影像製作</div>
+      </li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="s3">
+    <div class="eyebrow">Links <b>聯絡與連結</b></div>
+    <div class="actions">
+      <a class="btn primary" href="kunrong-li.vcf" download>
+        <span class="label">存入聯絡人</span>
+        <span class="sub">Download vCard (.vcf)</span>
+      </a>
+      <a class="btn" href="mailto:shakugan83@gmail.com">
+        <span class="label">Email</span>
+        <span class="sub">shakugan83@gmail.com</span>
+      </a>
+      <a class="btn" href="https://www.youtube.com/@ShaChrisStudio" target="_blank" rel="noopener">
+        <span class="label">YouTube</span>
+        <span class="sub">ShaChrisStudio</span>
+      </a>
+      <a class="btn" href="https://www.threads.net/@sha_chris" target="_blank" rel="noopener">
+        <span class="label">Threads</span>
+        <span class="sub">@sha_chris</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="qr-wrap">
+    <img src="qr.png" alt="本頁 QR code" width="104" height="104">
+    <p class="qr-note">掃描或輕觸分享此名片
+      <b>shachris1010.github.io/namecard</b>
+    </p>
+  </div>
+
+  <footer>KUN-RONG LI · BEIGANG · TAIWAN</footer>
+</main>
+</body>
+</html>
